@@ -2,10 +2,10 @@
 namespace App\Repository;
 use App\Core\Abstract\AbstractRepository;
 use App\Entity\User;
-use App\Core\App;
 use PDO;
 
-class UserRepository extends AbstractRepository
+class userRepository extends AbstractRepository
+
 {
    private static ?UserRepository $instance = null;
   
@@ -44,5 +44,20 @@ class UserRepository extends AbstractRepository
         var_dump($row);                         
        return User::toObject($row);
 
+
    }
+    public function selectAll(){
+
+    }
+     public function insert($entity){
+        
+
+     }
+     public function update($entity){
+
+     }
+     public function delete(){
+
+     }
+
 }

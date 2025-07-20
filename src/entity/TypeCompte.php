@@ -2,7 +2,7 @@
 namespace App\Entity;
  enum TypeCompte:string {
 
-    case  PRINCIPAL = ' Principal';
-     case SECONDAIRE = ' Secondaire';
+    case  PRINCIPAL = 'Principal';
+     case SECONDAIRE = 'Secondaire';
  }
     

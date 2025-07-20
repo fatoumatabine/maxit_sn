@@ -27,8 +27,8 @@ class compte extends AbstractEntity {
         $compte->setId($data['id'] ?? 0);
         $compte->setNumero($data['numero'] ?? '');
         $compte->setSolde($data['solde'] ?? 0.0);
-        $compte->setDateCreation(isset($data['dateCreation']) ? new DateTime($data['dateCreation']) : null);
-        $compte->setTypeCompte(isset($data['typeCompte']) ? TypeCompte::from($data['typeCompte']) : null);
+        $compte->setDateCreation(isset($data['date_creation']) ? new DateTime($data['date_creation']) : null);
+        $compte->setTypeCompte(isset($data['typecompte']) ? TypeCompte::from($data['typecompte']) : null);
         $user = new User();
         $user->setId($data['user_id'] ?? 0);
         $compte->setUser($user);

@@ -1,4 +1,11 @@
--- Script de création des tables pour le projet maxit-sn
+CREATE TYPE type_compte AS ENUM
+    ('Principal', 'Secondaire');
+
+  CREATE TYPE type_status_transaction AS ENUM
+    ('En_cours', 'terminer', 'Annuler');
+  
+  CREATE TYPE type_transaction AS ENUM
+    ('Depos', 'Retrait', 'Paiement');
 
 CREATE TABLE role (
     id SERIAL PRIMARY KEY,
@@ -23,7 +30,7 @@ CREATE TABLE "user" (
 CREATE TABLE compte (
     id SERIAL PRIMARY KEY,
     numeros VARCHAR(100) UNIQUE,
-    typecompte_id INTEGER REFERENCES typecompte(id),
+    typecompte type_compte,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     solde NUMERIC(15,2) DEFAULT 0,
     user_id INTEGER REFERENCES "user"(id)
@@ -35,8 +42,7 @@ CREATE TABLE transaction (
     id SERIAL PRIMARY KEY,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     compte_id INTEGER REFERENCES compte(id),
-    user_id INTEGER REFERENCES "user"(id),
     montant NUMERIC(15,2) NOT NULL,
     typetransaction type_transaction,
-    status status_transaction
+    status type_status_transaction
 );

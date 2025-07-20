@@ -36,12 +36,15 @@ class ComposerStaticInit4405c6137af49f92a4f7336d399b1810
         'A' => 
         array (
             'App\\Service\\' => 12,
+            'App\\Seeders\\' => 12,
             'App\\Repository\\' => 15,
+            'App\\Migration\\' => 14,
             'App\\Entity\\' => 11,
             'App\\Core\\Midellwares\\' => 21,
             'App\\Core\\Abstract\\' => 18,
             'App\\Core\\' => 9,
             'App\\Controller\\' => 15,
+            'App\\' => 4,
         ),
     );
 
@@ -78,9 +81,17 @@ class ComposerStaticInit4405c6137af49f92a4f7336d399b1810
         array (
             0 => __DIR__ . '/../..' . '/src/service',
         ),
+        'App\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/seeders',
+        ),
         'App\\Repository\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/repository',
+        ),
+        'App\\Migration\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/migrations',
         ),
         'App\\Entity\\' => 
         array (
@@ -101,6 +112,10 @@ class ComposerStaticInit4405c6137af49f92a4f7336d399b1810
         'App\\Controller\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/controller',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
