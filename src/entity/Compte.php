@@ -4,7 +4,7 @@ namespace App\Entity;
 use App\Core\Abstract\AbstractEntity;
 use DateTime;
 
-class compte extends AbstractEntity {
+class Compte extends AbstractEntity {
     private int $id;
     private string $numero;
     private float $solde;

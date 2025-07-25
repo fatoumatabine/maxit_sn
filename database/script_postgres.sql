@@ -12,7 +12,7 @@ CREATE TABLE role (
     nom VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE "user" (
+CREATE TABLE "users" (
     id SERIAL PRIMARY KEY,
     prenom VARCHAR(100),
     nom VARCHAR(100),

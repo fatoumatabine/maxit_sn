@@ -7,7 +7,8 @@ use App\Core\Session;
 abstract class AbstractController
 {
      protected Session $session;
-     protected $layout = 'client.layout';
+     protected $layout = 'security.layout';
+
 
     public function __construct()
     {

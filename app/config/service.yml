@@ -5,6 +5,7 @@ core:
 service:
       compteService: App\Service\CompteService
       securityService:   App\Service\SecurityService
+      transactionService: App\Service\TransactionService
 
 repository:
       compteRepository: App\Repository\CompteRepository

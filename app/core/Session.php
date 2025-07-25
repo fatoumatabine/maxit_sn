@@ -1,6 +1,5 @@
 <?php
 namespace App\Core;
-use App\Core\App;
 
 class Session
 {

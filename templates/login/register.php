@@ -18,7 +18,7 @@ ob_start();
             theme: {
                 extend: {
                     colors: {
-                        'custom-primary': '#ff6b35',
+                        'custom-primary':'#E67514',
                         'custom-light': '#fff5f2',
                         'custom-dark': '#374151',
                         'custom-darker': '#1f2937',
@@ -28,15 +28,15 @@ ob_start();
         }
     </script>
 </head>
+
 <body class="bg-black from-custom-light to-orange-200 min-h-screen">
     <div class="min-h-screen flex items-center justify-center px-4 py-8">
         <div class="max-w-2xl w-full bg-white shadow-lg rounded-lg p-8">
             <!-- Header -->
             <div class="text-center mb-8">
-                <div class="flex justify-center mb-6">
-                    <div class="w-20 h-20 bg-custom-primary rounded-full flex items-center justify-center text-white text-3xl">
-                        <i class=" fa fa-credit-card"></i>
-                    </div>
+                <div class="flex justify-center mb-6 flex-col items-center">
+                    <img src="/uploads/images/LOG.png" alt="MAXITSA" class="w-24 h-24 object-contain mb-2" style="background: #fff; border-radius: 50%; box-shadow: 0 2px 8px #e6751440;">
+                    
                 </div>
                 <h2 class="text-3xl font-extrabold text-black-900 mb-2">
                     Créer votre compte
@@ -61,9 +61,45 @@ ob_start();
 
             <!-- Formulaire -->
             <form class="space-y-6" method="POST" action="/register" enctype="multipart/form-data" id="registerForm">
-                <!-- Prénom et Nom -->
+                <div>
+                        <label for="numerosCarteIdentite" class="block text-sm font-medium text-custom-dark mb-1">
+                            Numéro de CNI 
+                            
+                            <span class="text-xs text-gray-500"></span>
+                        </label>
+                                    
+                        <div class="relative">
+                             <div role="status" class=" absolute hidden  right-3 top-3" id="spinner">
+    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+    </svg>
+    <span class="sr-only">Loading...</span>     
+</div>
+                            
+                            <div class="absolute left-3 top-3 text-custom-dark opacity-60">
+                                <i class="text-custom-primary fa fa-id-card"></i>
+                               
+                            </div>
+                            
+                            <input
+                                id="numerosCarteIdentite"
+                                name="numerosCarteIdentite"
+                                type="text"
+                                class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
+                                placeholder=""
+                                pattern="^[1-2][0-9]{12}$"
+                                title="CNI sénégalais "
+
+                            />
+                            <div><p class="error-message hidden text-green-800 text-xs mt-1"></p>
+                            <p class="success-message hidden text-red-800 text-xs mt-1"></p>
+                        </div>
+                        </div>
+                    </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
+                        
                         <label for="prenom" class="block text-sm font-medium text-dark mb-1">
                             Prénom 
                         </label>
@@ -72,10 +108,12 @@ ob_start();
                                 <i class="fa fa-user text-custom-primary"></i>
                             </div>
                             <input
+                               
                                 id="prenom"
                                 name="prenom"
                                 type="text"
-                                required
+                                value=""
+                               
                                 class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
                                 placeholder="Prénom"
                             />
@@ -91,39 +129,60 @@ ob_start();
                                 <i class="fa fa-user text-custom-primary"></i>
                             </div>
                             <input
+                                readonly
                                 id="nom"
                                 name="nom"
                                 type="text"
-                                required
+                                
                                 class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
                                 placeholder="Nom"
                             />
                         </div>
                     </div>
                 </div>
-
-                <!-- Téléphone -->
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-dark mb-1">
-                        Numéro de téléphone 
-                        <span class="text-xs text-gray-500"></span>
-                    </label>
-                    <div class="relative">
-                        <div class="absolute left-3 top-3 text-dark opacity-60">
-                            <i class="text-custom-primary fa fa-phone"></i>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="date_naissance" class="block text-sm font-medium text-dark mb-1">
+                            Date de naissance
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-3 top-3 text-custom-dark opacity-60">
+                                <i class="fa fa-calendar text-custom-primary"></i>
+                            </div>
+                            <input
+                                readonly
+                                id="date_naissance"
+                                name="date_naissance"
+                                type="text"
+                               
+                                class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
+                                placeholder="Date de naissance"
+                            />
                         </div>
-                        <input
-                            id="phone"
-                            name="phone"
-                            type="tel"
-                          
-                            class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
-                            placeholder=""
-                            pattern="^(77|78|76|75|70)[0-9]{7}$"
-                            title="Numéro portable sénégalais (ex: 771234567)"
-                        />
+                    </div>
+
+                    <div>
+                        <label for="lieu_naissance" class="block text-sm font-medium text-custom-dark mb-1">
+                            Lieu de naissance
+                        </label>
+                        <div class="relative">
+                            <div class="absolute left-3 top-3 text-custom-dark opacity-60">
+                                <i class="fa fa-user text-custom-primary"></i>
+                            </div>
+                            <input
+                                readonly
+                                id="lieu_naissance"
+                                name="lieu_naissance"
+                                type="text"
+                                
+                                class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
+                                placeholder="Lieu de naissance"
+                            />
+                        </div>
                     </div>
                 </div>
+
+                
 
                 <!-- Mot de passe -->
                 <div>
@@ -140,7 +199,7 @@ ob_start();
                             name="password"
                             type="password"
                           
-                            minlength="8"
+                         
                             class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
                             placeholder="Créer un mot de passe fort"
                         />
@@ -149,48 +208,33 @@ ob_start();
                 </div>
 
                 <!-- Confirmation mot de passe -->
-                <div>
-                    <label for="confirm_password" class="block text-sm font-medium text-custom-dark mb-1">
-                        Confirmer le mot de passe 
-                    </label>
-                    <div class="relative">
-                        <div class="absolute left-3 top-3 text-dark opacity-60">
-                            <i class="text-custom-primary fa fa-lock"></i>
-                        </div>
-                        <input
-                            id="confirm_password"
-                            name="confirm_password"
-                            type="password"
-                          
-                            class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
-                            placeholder="Confirmer le mot de passe"
-                        />
-                    </div>
-                </div>
+               
 
                 <!-- CNI et Adresse -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="numerosCarteIdentite" class="block text-sm font-medium text-custom-dark mb-1">
-                            Numéro de CNI 
-                            <span class="text-xs text-gray-500"></span>
-                        </label>
-                        <div class="relative">
-                            <div class="absolute left-3 top-3 text-custom-dark opacity-60">
-                                <i class="text-custom-primary fa fa-id-card"></i>
-                            </div>
-                            <input
-                                id="numerosCarteIdentite"
-                                name="numerosCarteIdentite"
-                                type="text"
-                              
-                                class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
-                                placeholder="11992001000012"
-                                pattern="^[1-2][0-9]{13}$"
-                                title="CNI sénégalais "
-                            />
+                    <!-- Téléphone -->
+                <div>
+                    
+                    <label for="phone" class="block text-sm font-medium text-dark mb-1">
+                        Numéro de téléphone 
+                        <span class="text-xs text-gray-500"></span>
+                    </label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-3 text-dark opacity-60">
+                            <i class="text-custom-primary fa fa-phone"></i>
                         </div>
+                        <input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                          
+                            class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
+                            placeholder=""
+                            title=""
+                        />
                     </div>
+                </div>
+                   
 
                     <div>
                         <label for="adresse" class="block text-sm font-medium text-dark mb-1">
@@ -205,7 +249,6 @@ ob_start();
                                 name="adresse"
                                 type="text"
                               
-                                minlength="5"
                                 class="w-full pl-12 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-custom-darker rounded-lg focus:outline-none focus:ring-2 focus:ring-custom-primary focus:border-transparent transition-all duration-200"
                                 placeholder="Votre adresse complète"
                             />
@@ -217,7 +260,7 @@ ob_start();
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-dark mb-1">
-                            Photo carte d'identité (Recto) 
+                            Photo carte d'identité  
                         </label>
                         <input
                             type="file"
@@ -227,26 +270,15 @@ ob_start();
                             class="block w-full text-sm text-custom-dark file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-custom-primary hover:file:bg-orange-100 border border-gray-300 rounded-lg"
                         />
                     </div>
+                    
 
-                    <div>
-                        <label class="block text-sm font-medium text-dark mb-1">
-                            Photo carte d'identité (Verso) 
-                        </label>
-                        <input
-                            type="file"
-                            name="idPhotoBack"
-                            accept="image/"
-                          
-                            class="block w-full text-sm text-custom-dark file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-custom-primary hover:file:bg-orange-100 border border-gray-300 rounded-lg"
-                        />
-                    </div>
+                   
                 </div>
 
-                <!-- Bouton de soumission -->
                 <div>
                     <button
                         type="submit"
-                        class="w-full bg-custom-primary hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                        class="w-[50%] bg-custom-primary hover:bg-orange-800 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
                         id="submitBtn"
                     >
                         <span id="submitText">Créer le compte</span>
@@ -257,7 +289,7 @@ ob_start();
                 <div class="text-center">
                     <p class="text-sm text-custom-dark">
                         Vous avez déjà un compte ?
-                        <a href="/login" class="font-medium text-custom-primary hover:text-orange-600 transition-colors">
+                        <a href="/login" class="font-medium text-custom-primary hover:text-orange-800 transition-colors">
                             Se connecter
                         </a>
                     </p>
@@ -265,145 +297,8 @@ ob_start();
             </form>
         </div>
     </div>
+<script type="module" src="assets/js/main.js"></script>
 
-    <script>
-        // Animation du formulaire
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            const btn = document.getElementById('submitBtn');
-            const text = document.getElementById('submitText');
-            
-            text.textContent = 'Création en cours...';
-            btn.disabled = true;
-            btn.classList.add('opacity-60');
-        });
-
-        // Validation du téléphone sénégalais
-        document.getElementById('phone').addEventListener('input', function(e) {
-            const phone = e.target.value.replace(/\D/g, '');
-            const isValid = /^(77|78|76|75|70)\d{7}$/.test(phone);
-            
-            if (phone.length > 0) {
-                if (isValid) {
-                    e.target.classList.remove('border-red-500', 'bg-red-50');
-                    e.target.classList.add('border-green-500', 'bg-green-50');
-                } else {
-                    e.target.classList.remove('border-green-500', 'bg-green-50');
-                    e.target.classList.add('border-red-500', 'bg-red-50');
-                }
-            } else {
-                e.target.classList.remove('border-red-500', 'bg-red-50', 'border-green-500', 'bg-green-50');
-            }
-        });
-
-        // Validation de la CNI sénégalaise
-        document.getElementById('numerosCarteIdentite').addEventListener('input', function(e) {
-            const cni = e.target.value.replace(/\D/g, '');
-            const isValid = /^[1-2]\d{13}$/.test(cni);
-            
-            if (cni.length > 0) {
-                if (isValid) {
-                    e.target.classList.remove('border-red-500', 'bg-red-50');
-                    e.target.classList.add('border-green-500', 'bg-green-50');
-                } else {
-                    e.target.classList.remove('border-green-500', 'bg-green-50');
-                    e.target.classList.add('border-red-500', 'bg-red-50');
-                }
-            } else {
-                e.target.classList.remove('border-red-500', 'bg-red-50', 'border-green-500', 'bg-green-50');
-            }
-        });
-
-        // Validation de la force du mot de passe
-        document.getElementById('password').addEventListener('input', function(e) {
-            const password = e.target.value;
-            const strengthDiv = document.getElementById('password-strength');
-            
-            let score = 0;
-            let feedback = [];
-            
-            if (password.length >= 8) score++;
-            else feedback.push('8+ caractères');
-            
-            if (/[A-Z]/.test(password)) score++;
-            else feedback.push('majuscule');
-            
-            if (/[a-z]/.test(password)) score++;
-            else feedback.push('minuscule');
-            
-            if (/\d/.test(password)) score++;
-            else feedback.push('chiffre');
-            
-            if (/[^a-zA-Z0-9]/.test(password)) score++;
-            else feedback.push('caractère spécial');
-            
-            if (password.length === 0) {
-                strengthDiv.innerHTML = '';
-                e.target.classList.remove('border-red-500', 'border-yellow-500', 'border-green-500');
-            } else if (score < 3) {
-                strengthDiv.innerHTML = '<span class="text-red-500">Faible - Manque: ' + feedback.join(', ') + '</span>';
-                e.target.classList.remove('border-yellow-500', 'border-green-500');
-                e.target.classList.add('border-red-500');
-            } else if (score < 5) {
-                strengthDiv.innerHTML = '<span class="text-yellow-500">Moyen - Manque: ' + feedback.join(', ') + '</span>';
-                e.target.classList.remove('border-red-500', 'border-green-500');
-                e.target.classList.add('border-yellow-500');
-            } else {
-                strengthDiv.innerHTML = '<span class="text-green-500">Fort ✓</span>';
-                e.target.classList.remove('border-red-500', 'border-yellow-500');
-                e.target.classList.add('border-green-500');
-            }
-        });
-
-        // Validation de la confirmation du mot de passe
-        document.getElementById('confirm_password').addEventListener('input', function(e) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = e.target.value;
-            
-            if (confirmPassword.length === 0) {
-                e.target.classList.remove('border-red-500', 'bg-red-50', 'border-green-500', 'bg-green-50');
-            } else if (password !== confirmPassword) {
-                e.target.classList.remove('border-green-500', 'bg-green-50');
-                e.target.classList.add('border-red-500', 'bg-red-50');
-            } else {
-                e.target.classList.remove('border-red-500', 'bg-red-50');
-                e.target.classList.add('border-green-500', 'bg-green-50');
-            }
-        });
-
-        // Validation des noms
-        ['prenom', 'nom'].forEach(fieldId => {
-            document.getElementById(fieldId).addEventListener('input', function(e) {
-                const value = e.target.value;
-                const isValid = /^[a-zA-ZÀ-ÿ\s\-']+$/.test(value) && value.length >= 2;
-                
-                if (value.length === 0) {
-                    e.target.classList.remove('border-red-500', 'border-green-500');
-                } else if (isValid) {
-                    e.target.classList.remove('border-red-500');
-                    e.target.classList.add('border-green-500');
-                } else {
-                    e.target.classList.remove('border-green-500');
-                    e.target.classList.add('border-red-500');
-                }
-            });
-        });
-
-        // Validation de l'adresse
-        document.getElementById('adresse').addEventListener('input', function(e) {
-            const value = e.target.value;
-            const isValid = value.length >= 5;
-            
-            if (value.length === 0) {
-                e.target.classList.remove('border-red-500', 'border-green-500');
-            } else if (isValid) {
-                e.target.classList.remove('border-red-500');
-                e.target.classList.add('border-green-500');
-            } else {
-                e.target.classList.remove('border-green-500');
-                e.target.classList.add('border-red-500');
-            }
-        });
-    </script>
 </body>
 </html>
 

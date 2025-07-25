@@ -15,6 +15,7 @@ class SecurityController extends AbstractController
 {
     private SecurityService $securityService;
 
+
     public function __construct()
 
     {
@@ -26,6 +27,7 @@ class SecurityController extends AbstractController
     public function index()
     {
         $this->renderHtml('login/login');
+        
     }
 
     public function login()
@@ -92,10 +94,57 @@ class SecurityController extends AbstractController
 
 
 
-    public function register()
-    {
-      $this->renderHtml('login/register');
+   
+public function register()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = [
+            'nom' => trim($_POST['nom'] ?? ''),
+            'prenom' => trim($_POST['prenom'] ?? ''),
+            'login' => trim($_POST['phone'] ?? ''), // login = téléphone
+            'password' => trim($_POST['password'] ?? ''),
+            'phone' => trim($_POST['phone'] ?? ''),
+            'adresse' => trim($_POST['adresse'] ?? ''),
+            'numerosCarteIdentite' => trim($_POST['numerosCarteIdentite'] ?? ''),
+            'photoIdentite' => $_FILES['photoIdentite'] ?? null,
+        ];
+
+        // Validation simple (à adapter selon ton Validator)
+        Validator::validate($data, [
+            'nom' => ['required', 'min:2', 'max:50'],
+            'prenom' => ['required', 'min:2', 'max:50'],
+            'phone' => ['required', 'senegal_phone'],
+            'password' => ['required', 'min:4'],
+            'adresse' => ['required'],
+            'numerosCarteIdentite' => ['required', 'min:10', 'max:20'],
+        ]);
+
+        if (!Validator::isValid()) {
+            //var_dump(Validator::getErrors());die();
+
+            $this->session->set('errors', Validator::getErrors());
+            header('Location: /register');
+            exit;
+        }
+
+        // Ici, tu dois appeler ton service pour enregistrer l'utilisateur
+        $user = $this->securityService->register($data);
+        if ($user && $user->getId()) {
+
+            $this->session->set('success', 'Compte créé avec succès ! Vous pouvez maintenant vous connecter.');
+            header('Location: /login');
+            exit;
+            
+        } else {
+            $this->session->set('errors', ['globalError' => 'Erreur lors de la création du compte. Veuillez réessayer.']);
+            header('Location: /register');
+            exit;
+        }
     }
+
+    // GET : afficher le formulaire
+    $this->renderHtml('login/register');
+}
 
     public function create()
     {

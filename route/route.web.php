@@ -34,6 +34,12 @@ $routes = [
     'action' => 'index',
     'midellewares'=>['auth']
 ],
+'/client/transactions' => [
+    'controller' => ClientController::class,
+    'action' => 'showTransactions',
+    // 'midellewares'=>['auth']
+],
+// ...existing code...
 '/logout' => [
     'controller' => SecurityController::class,
     'action' => 'logout',

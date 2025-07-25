@@ -6,9 +6,9 @@ use App\Entity\Compte;
 use App\Entity\User;
 use PDO;
 
-use function PHPSTORM_META\map;
 
 class CompteRepository extends AbstractRepository
+
 {
    private static ?CompteRepository $instance = null;
   
@@ -53,4 +53,24 @@ class CompteRepository extends AbstractRepository
         
 
      }
+    public function getTransactionsByCompte($compte_id)
+    {
+        $sql = "SELECT 
+                    id,
+                    date,
+                    compte_id,
+                    montant,
+                    typetransaction,
+                    status
+                FROM transaction 
+                WHERE compte_id = :compte_id
+                ORDER BY date DESC
+                LIMIT 10";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':compte_id', $compte_id, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -29,4 +29,7 @@ class CompteService {
 
 return $this->compteRepository->findByUser($user);
    }
+    public function getTransactionsByCompte($compte_id) {
+         return $this->compteRepository->getTransactionsByCompte($compte_id);
+    }
 } 

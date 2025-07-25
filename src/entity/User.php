@@ -12,10 +12,10 @@ use App\Core\Abstract\AbstractEntity;
     private string $adresse;
     private string $comptes;
     private string  $nin;
-    private string $photorecto;
+    private string $copie_cni;
     private string $photoverso;
 
- public function  __construct(int $id = 0, string $prenom = '', string $nom = '', string $login = '', string $password = '', string $adresse = '', string $nin = '', string $photorecto = '', string $photoverso = '') {
+ public function  __construct(int $id = 0, string $prenom = '', string $nom = '', string $login = '', string $password = '', string $adresse = '', string $nin = '', string $copie_cni = '', string $photoverso = '') {
         $this->id = $id;
         $this->prenom = $prenom;
         $this->nom = $nom;
@@ -24,8 +24,7 @@ use App\Core\Abstract\AbstractEntity;
         $this->role = new Role;
         $this->adresse = $adresse;
         $this->nin = $nin;
-        $this->photorecto = $photorecto;
-        $this->photoverso = $photoverso;
+        $this->copie_cni = $copie_cni;
     } 
     public function toArray(): array {
         return [
@@ -37,8 +36,7 @@ use App\Core\Abstract\AbstractEntity;
             'role' => $this->getRole()->toArray(),
             'adresse' => $this->getAdresse(),
             'nin' => $this->getNin(),
-            'photorecto' => $this->getPhotorecto(),
-            'photoverso' => $this->getPhotoverso(),
+            'copie_cni' => $this->getCopieCni(),
         ];
     }
     public static function toObject(array $data): self {
@@ -53,8 +51,7 @@ use App\Core\Abstract\AbstractEntity;
         $user->setRole($role);
         $user->setAdresse($data['adresse'] ?? '');
         $user->setNin($data['nin'] ?? '');
-        $user->setPhotorecto($data['photorecto'] ?? '');
-        $user->setPhotoverso($data['photoverso'] ?? '');
+        $user->setCopieCni($data['copie_cni'] ?? '');
         return $user;
     }
  
@@ -224,21 +221,21 @@ use App\Core\Abstract\AbstractEntity;
     }
 
     /**
-     * Get the value of photorecto
+     * Get the value of copie_cni
      */ 
-    public function getPhotorecto()
+    public function getCopieCni()
     {
-        return $this->photorecto;
+        return $this->copie_cni;
     }
 
     /**
-     * Set the value of photorecto
+     * Set the value of copie_cni
      *
      * @return  self
      */ 
-    public function setPhotorecto($photorecto)
+    public function setCopieCni($copie_cni)
     {
-        $this->photorecto = $photorecto;
+        $this->copie_cni = $copie_cni;
 
         return $this;
     }
@@ -246,22 +243,7 @@ use App\Core\Abstract\AbstractEntity;
     /**
      * Get the value of photoverso
      */ 
-    public function getPhotoverso()
-    {
-        return $this->photoverso;
-    }
-
-    /**
-     * Set the value of photoverso
-     *
-     * @return  self
-     */ 
-    public function setPhotoverso($photoverso)
-    {
-        $this->photoverso = $photoverso;
-
-        return $this;
-    }
+  
 
     /**
      * Get the value of nin
@@ -283,4 +265,4 @@ use App\Core\Abstract\AbstractEntity;
         return $this;
     }
 }
-  
+

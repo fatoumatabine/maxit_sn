@@ -15,7 +15,7 @@ class Seeder
     {
         try {
             $this->seedDatabase(); // $this->insertIntoDB();
-            echo "Base de données peuplée avec succès.\n";
+            echo "Base  avec succès.\n";
 
         } catch (PDOException $e) {
             die("Erreur de seed: " . $e->getMessage());
@@ -25,11 +25,9 @@ class Seeder
     private function seedDatabase()
     {
         $sql = match ($this->driver) {
-            // database/insert_mysql.sql
-            // database/insert_postgres.sql
-            // remplacer les chemins par les chemins réels de vos fichiers SQL
-            'mysql' => file_get_contents(__DIR__ . '/seeds/mysql.sql'),
-            'pgsql' => file_get_contents(__DIR__ . '/seeds/postgres.sql'),
+           
+            'mysql' => file_get_contents(__DIR__ . '/database/insert_mysql.sql'),
+            'pgsql' => file_get_contents(__DIR__ . '/database/insert_postgres.sql'),
             default => throw new Exception("Driver non supporté: " . $this->driver),
         };
         $this->pdo->exec($sql);

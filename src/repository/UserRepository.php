@@ -41,7 +41,7 @@ class userRepository extends AbstractRepository
        if (!$row) {
            return null;
         }
-        var_dump($row);                         
+       // var_dump($row);                         
        return User::toObject($row);
 
 
@@ -50,7 +50,19 @@ class userRepository extends AbstractRepository
 
     }
      public function insert($entity){
-        
+        $query = "INSERT INTO users (nom, prenom, login, password, adresse, nin, role_id,copie_cni) VALUES (:nom, :prenom, :login, :password, :adresse, :nin, :role_id, :copie_cni)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ':nom' => $entity->getNom(),
+            ':prenom' => $entity->getPrenom(),
+            ':login' => $entity->getLogin(),
+            ':password' => $entity->getPassword(),
+            ':adresse' => $entity->getAdresse(),
+            ':nin' => $entity->getNin(),
+            ':role_id' => 1,
+            ':copie_cni' => $entity->getCopieCni()
+        ]);
+        return $this->pdo->lastInsertId();
 
      }
      public function update($entity){

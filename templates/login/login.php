@@ -1,50 +1,29 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - MAXITSA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#ff6b35',
-                        'primary-hover': '#e55a2b',
-                        secondary: '#f7931e'
-                        
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="min-h-screen bg-gray-50">
-    <div class="min-h-screen flex flex-col lg:flex-row">
+<div class="min-h-screen flex flex-col lg:flex-row">
 
 
-        <div class="lg:w-1/2 bg-gradient-to-br from-primary to-secondary flex flex-col justify-center items-center p-8 lg:p-12 relative overflow-hidden">
-            <img src="/uploads/images/bnt.png" alt="Visuel MAXITSA" class="absolute inset-0 w-full h-full object-cover z-0" style="background: #fff;">
-            <div class="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+        <div class="lg:w-1/2  flex flex-col justify-center items-center p-8 lg:p-12 relative overflow-hidden">
+            <img src="/uploads/images/bne.jpeg" alt="Visuel MAXITSA" class="absolute inset-0 w-full h-full object-cover z-0" style="background: #fff;">
+            <!-- <div class="absolute inset-0 bg-black bg-opacity-20 z-10"></div> -->
             <!-- Content -->
             
         </div>
 
         <!-- Panneau de droite -->
-        <div class="lg:w-1/2 flex items-center bg-[#FFFFF] justify-center p-6 lg:p-12">
-            <div class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
+        <div class="lg:w-1/2 flex items-center bg-white justify-center p-6 lg:p-12">
+            <div class="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-9 lg:p-12">
                 
-                <div class="flex items-center mb-8">
-                    <div class="bg-primary text-white px-6 py-3 rounded-full font-bold text-xl mr-4">
-                        MaxitSa
+                <div class="text-center mb-8">
+                    <div class="flex justify-center mb-6 flex-col items-center">
+                        <img src="/uploads/images/LOG.png" alt="MAXITSA" class="w-24 h-24 object-contain mb-2" style="background: #fff; border-radius: 50%; box-shadow: 0 2px 8px #e6751440;">
                     </div>
-                    <div>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800">Connexion</h2>
-                    </div>
+                    <h2 class="text-3xl font-extrabold text-black-900 mb-2">
+                        Connexion à votre compte
+                    </h2>
+                    <p class="text-sm text-custom-dark">
+                        Accédez à votre espace personnel MAXITSA
+                    </p>
                 </div>
-                
+
                 <p class="text-gray-600 mb-8 text-lg">
                     Connectez-vous à votre compte pour accéder aux services
                 </p>
@@ -151,7 +130,3 @@
             </div>
         </div>
     </div>
-
-   
-</body>
-</html>
